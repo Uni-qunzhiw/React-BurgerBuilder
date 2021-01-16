@@ -3,13 +3,13 @@ import React from 'react';
 
 import classes from '../Layout/Layout.module.css';
 import Aux from '../../hoc/Aux';
-
+import Toolbar from '../Navigation/ToolBar/Toolbar';
 const layout = (props) => (
     // to handle adjecnet jsx elements, 
     // frist: we could return them in to an array
     // second: we can use higher order components OR react.fragment
     <Aux>
-        <div> Toolbar, SideDrawer, Backdrop</div>
+        <Toolbar />
         <main className = {classes.Content}>
             {/* output components wrapped with this layout. */}
             {props.children}
