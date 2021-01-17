@@ -7,6 +7,7 @@ import Modal from'../../components/UI/Modal/Modal';
 import OrderSummary from  '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 const INGRREDIENT_PRICE = {
     salad: 1,
     cheese: 1,
@@ -124,11 +125,13 @@ class BurgerBuilder extends Component {
         for( let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
+        
         let orderSummary = <OrderSummary 
             summary = {this.state.totalPrice.toFixed(2)}
             purchaseCanceled = {this.purchaseCancleHandler}
             purchaseContinue = {this.purchaseContinueHandler}
             ingredients = {this.state.ingredients} />
+       
         if(this.state.loading) {
             orderSummary = <Spinner />
         }
@@ -138,6 +141,7 @@ class BurgerBuilder extends Component {
                 <Modal 
                     show={this.state.purchasing} 
                     modalClosed = {this.purchaseCancleHandler}>
+                        {/* if spinner doesnt show, check modal.js */}
                         {orderSummary}
                 </Modal>
                 <Burger ingredients = {this.state.ingredients}/>
@@ -153,4 +157,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder, axios);

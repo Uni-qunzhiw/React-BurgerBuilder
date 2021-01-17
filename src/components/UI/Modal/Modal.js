@@ -7,6 +7,7 @@ import Backdrop from '../Backdrop/Backdrop';
 class Modal extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
+        // we have to monitor if the children in modal is changed for spinner.
         return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
