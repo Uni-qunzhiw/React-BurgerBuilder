@@ -1,19 +1,28 @@
 .Toolbar {
     height: 56px;
     width: 100%;
-    position: fixed;  /*always at top even we scrolled*/
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #703B09;
-    display: flex; /* all items  in tool bar are aligned next to each other check out flex boxes*/
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
-    z-index: 90; /* has to beloßw to number we set for backdrop*/
+    z-index: 90;
 }
 
 .Toolbar nav {
-    height : 100%; /* in the navigation also control height relative to tool bar height */
+    height: 100%;
+}
 
+.Logo {
+    height: 80%;
+}
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
 }
